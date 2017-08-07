@@ -1,29 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react'
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+  AppRegistry
+} from 'react-native'
 
-import MovieSelection from './app/components/MovieSelection/MovieSelection'
-import Header from './app/components/Header/Header'
-import SubHeader from './app/components/SubHeader/SubHeader'
+import { Provider } from 'react-redux'
+import configureStore from './configureStore'
+import App from './app'
 
-export default class movieapp extends Component {
-  render() {
-    return (
-      <View>
-      <Header />
-      <SubHeader />
-      <MovieSelection />
-      </View>
-    );
-  }
-}
+const store = configureStore()
 
-const styles = StyleSheet.create({
+const movieapp = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+)
 
-});
-
-AppRegistry.registerComponent('movieapp', () => movieapp);
+AppRegistry.registerComponent('movieapp', () => movieapp)

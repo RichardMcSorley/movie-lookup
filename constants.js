@@ -1,0 +1,5 @@
+export const FETCHING_MOVIES = 'FETCHING_MOVIES'
+export const FETCHING_MOVIES_SUCCESS = 'FETCHING_MOVIES_SUCCESS'
+export const FETCHING_MOVIES_FAILURE = 'FETCHING_MOVIES_FAILURE'
+export const OMDB_KEY = 'd3f1fd17'
+export const OMDB_BASE = 'https://www.omdbapi.com/'

@@ -11,7 +11,7 @@ import {
 export default class MovieSelection extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <Text>MovieSelection</Text>
       </View>
     );

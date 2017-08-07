@@ -7,20 +7,17 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
+import Header from '../../components/Header/Header';
 
-export default class SubHeader extends Component {
+export default class Results extends Component {
   render() {
     return (
-      <View>
-        <Text>SubHeader</Text>
-      </View>
+        <Header />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+
 });
-AppRegistry.registerComponent('SubHeader', () => SubHeader);
+AppRegistry.registerComponent('Results', () => Results);

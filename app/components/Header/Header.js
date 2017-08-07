@@ -8,6 +8,7 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
+import Placeholder from '../../test'
 
 export default class Header extends Component {
     constructor(props){
@@ -24,10 +25,10 @@ export default class Header extends Component {
             style={styles.searchInput}
             onChangeText={(text)=> this.setState({text})}
             onSubmitEditing={()=> this.submit()}
-            placeholder='Search for a Movie...'
+            placeholder={Placeholder}
             autoFucus='true'
             keyboardType='web-search'
-            returnKeyType='Search'
+            returnKeyType='search'
             underlineColorAndroid='transparent'
             value={this.state.text}
         />
@@ -38,14 +39,17 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: 20,
-    padding: 20
+    height: 80,
+    padding: 20,
+    backgroundColor: 'red'
   },
   searchInput: {
       height: 40,
       borderColor: 'gray',
-      borderWidth: 1
+      borderWidth: 1,
+      backgroundColor: 'white',
+      textAlign: 'left',
+      paddingLeft: 20
   }
 });
 AppRegistry.registerComponent('Header', () => Header);
