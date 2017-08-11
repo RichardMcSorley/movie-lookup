@@ -8,24 +8,29 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
-import Placeholder from '../../test'
+import { connect } from 'react-redux'
+import { fetchMoviesFromAPI } from './../../../actions'
 
-export default class Header extends Component {
+class Header extends Component {
     constructor(props){
         super(props);
         this.state = { text: ''}
     }
     submit(){
+        //fetchMoviesFromAPI('test');
+        //dispatch(fetchMoviesFromAPI('Batman')
+        this.props.getMovies(this.state.text)
         console.log('SUBMIT SEARCH', this.state.text)
     }
   render() {
+      const { movies, isFetching } = this.props.movies;
     return (
       <View style={styles.container}>
         <TextInput
             style={styles.searchInput}
             onChangeText={(text)=> this.setState({text})}
             onSubmitEditing={()=> this.submit()}
-            placeholder={Placeholder}
+            placeholder='Search for Movies...'
             autoFucus='true'
             keyboardType='web-search'
             returnKeyType='search'
@@ -52,4 +57,19 @@ const styles = StyleSheet.create({
       paddingLeft: 20
   }
 });
+
+function mapStateToProps (state) {
+  return {
+    movies: state.movies
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    getMovies: (name) => dispatch(fetchMoviesFromAPI(name))
+  }
+}
+Header = connect(  mapStateToProps,
+  mapDispatchToProps)(Header)
+export default Header
 AppRegistry.registerComponent('Header', () => Header);

@@ -8,10 +8,15 @@ import {
   StyleSheet,
 } from 'react-native';
 import Header from '../../components/Header/Header'
+import { Provider } from 'react-redux'
+import configureStore from '../../../configureStore'
+import App from './container'
+
+const store = configureStore()
 
 export default class Home extends Component {
     static navigationOptions = {
-        title: 'Home',
+        title: 'Search',
         headerStyle: {
             backgroundColor: 'red'
         },
@@ -19,25 +24,22 @@ export default class Home extends Component {
             color: '#fff'
         }
     };
- getMoviesSearch() {
-   return fetch('http://www.omdbapi.com/?s=Batman&page=1&apikey=d3f1fd17')
-     .then((response) => response.json())
-     .then((responseJson) => {
-       return responseJson.Search;
-     })
-     .catch((error) => {
-       console.error(error);
-     });
- }
-  render() {
-      const {navigate} = this.props.navigation;
-    return (
-        <Header />
-    );
-  }
+    constructor(props){
+        super(props);
+        console.log(props)
+    }
+
+    render() {
+        //constant for navigation
+        const {
+            navigate
+        } = this.props.navigation;
+        return (
+            <Provider store={store}>
+              <App nav={this.props.navigation}/>
+            </Provider>
+        );
+    }
 }
 
-const styles = StyleSheet.create({
-
-});
 AppRegistry.registerComponent('Home', () => Home);

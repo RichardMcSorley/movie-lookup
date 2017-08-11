@@ -1,18 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation';
 import {
-  AppRegistry
-} from 'react-native'
+  AppRegistry,
+} from 'react-native';
 
-import { Provider } from 'react-redux'
-import configureStore from './configureStore'
-import App from './app'
+import Home from './app/pages/Home/Home'
+import Details from './app/pages/Details/Details'
 
-const store = configureStore()
+const movieapp = StackNavigator({
+  Home: {
+    screen: Home,
+},
+Details: {
+  screen: Details,
+},
+});
 
-const movieapp = () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
-)
-
-AppRegistry.registerComponent('movieapp', () => movieapp)
+AppRegistry.registerComponent('movieapp', () => movieapp);
