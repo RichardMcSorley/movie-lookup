@@ -18,14 +18,34 @@ class App extends React.Component {
       } = this.props.movie;
     return (
         <ScrollView>
-    
-        <Text >{movie.Title}</Text>
-        <Text >IMDB Rating: {movie.imdbRating}</Text>
+
+        <Text style={{
+          fontSize: 23,
+          padding: 10,
+          fontWeight: '700'
+        }} >{movie.Title}</Text>
+        <Text style={{
+          paddingLeft: 15
+        }}>IMDB Rating: {movie.imdbRating}</Text>
         <Image
               source={{uri: movie.Poster}}
-              style={styles.thumbnail}
+              style={{
+                height: 200,
+                width: 120,
+                padding: 5,
+                margin: 10,
+              }}
           />
-          <Text >Plot: {movie.Plot}</Text>
+          <Text style={{
+            fontSize: 20,
+            paddingLeft: 15,
+            fontWeight: '700'
+          }}>Plot: </Text>
+          <Text style={{
+            fontSize: 20,
+            padding: 15
+          }}>{movie.Plot}</Text>
+
         </ScrollView>
     )
   }
@@ -46,6 +66,7 @@ styles = StyleSheet.create({
 },
 thumbnail:{
     height: 300,
+    padding: 5
 }
 })
 
